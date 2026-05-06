@@ -25,8 +25,7 @@ const Services = ({ service }) => {
             className="group flex flex-col md:flex-row md:items-center justify-between gap-4 p-5 rounded-xl border border-[var(--rv-border)] bg-[var(--rv-card)]
             hover:shadow-lg hover:border-[var(--rv-primary)] transition-all duration-300"
           >
-            <div className="w-12 h-12 flex items-center justify-center rounded-xl text-xl bg-gradient-to-r from-[var(--rv-primary)] to-[var(--rv-secondary)] 
-              text-[var(--rv-white)] transition">
+            <div className="w-12 h-12 flex items-center justify-center rounded-xl text-xl bg-gradient-to-r from-[var(--rv-primary)] to-[var(--rv-secondary)]  text-[var(--rv-white)] transition">
               {i + 1}
             </div>
 

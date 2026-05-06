@@ -19,7 +19,7 @@ const InputField = ({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className={`p-3 rounded-md border bg-transparent focus:outline-none 
+        className={`p-2.5 rounded-md border bg-transparent focus:outline-none 
         ${error ? "border-[var(--rv-red)]" : "border-[var(--rv-border)]"}`}
       />
 

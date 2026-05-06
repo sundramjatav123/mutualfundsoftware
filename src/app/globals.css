@@ -1,13 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Asul:wght@400;700&family=Lovers+Quarrel&family=Moon+Dance&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Serif+Text:ital@0;1&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-    --rv-body-font1: "Asul", serif;
-    --rv-body-font2: "Moon Dance", cursive;
-    --rv-red: #fc0000;
+    --rv-body-font1: "DM Sans", sans-serif;
+    --rv-body-font2:  "DM Serif Text", serif;
+    --rv-red: #c40707;
     --rv-green: #09bb4d;
     --rv-yellow: #f1da0e;
     --rv-bg: #ffffff;
@@ -40,7 +39,7 @@
     --rv-bg: #080808;
     --rv-text: #ffffff;
     --rv-border: #ffffff1a;
-    --rv-red: #fc0000;
+    --rv-red: #c40707;
     --rv-green: #09bb4d;
     --rv-primary: #0466c8;
     --rv-primary-light: #050e16;

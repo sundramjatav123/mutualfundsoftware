@@ -67,9 +67,7 @@ const Mission = () => {
                 <motion.div
                   animate={{ rotate: isActive ? 180 : 0 }}
                   transition={{ duration: 0.3 }}
-                  className={`mb-4 text-3xl ${
-                    isActive ? "text-[var(--rv-white)]" : "text-[var(--rv-primary)]"
-                  }`}
+                  className={`mb-4 text-3xl ${isActive ? "text-[var(--rv-white)]" : "text-[var(--rv-primary)]" }`}
                 >
                   <FiArrowDownRight />
                 </motion.div>
@@ -84,9 +82,7 @@ const Mission = () => {
                     height: isActive ? "auto" : "auto",
                   }}
                   transition={{ duration: 0.3 }}
-                  className={`overflow-hidden ${
-                    isActive ? "mt-2" : ""
-                  }`}
+                  className={`overflow-hidden ${ isActive ? "mt-2" : ""  }`}
                 >
                   <p className="leading-6">
                     {item.content}

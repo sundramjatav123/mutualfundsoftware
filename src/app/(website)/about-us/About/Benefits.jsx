@@ -87,9 +87,7 @@ const Benefits = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ delay: index * 0.04 }}
                                 whileHover={{ scale: 1.01 }}
-                                className={`group relative p-6 rounded-2xl border border-[var(--rv-border)] bg-[var(--rv-card)]
-              hover:-translate-y-1 hover:shadow-xl transition-all duration-300
-              ${index % 2 !== 0 ? "lg:ml-5" : ""}`}
+                                className={`group relative p-6 rounded-2xl border border-[var(--rv-border)] bg-[var(--rv-card)] hover:-translate-y-1 hover:shadow-xl transition-all duration-300  ${index % 2 !== 0 ? "lg:ml-5" : ""}`}
                             >
 
                                 <div className="absolute -top-10 right-10 md:-right-10 w-28 h-28 bg-[var(--rv-primary)] opacity-10 blur-2xl group-hover:opacity-30 transition"></div>
@@ -100,8 +98,7 @@ const Benefits = () => {
                                         initial={{ scale: 0.8 }}
                                         whileInView={{ scale: 1 }}
                                         transition={{ delay: index * 0.2 }}
-                                        className="text-3xl p-3 rounded-xl bg-[var(--rv-primary-light)] text-[var(--rv-primary)]
-                group-hover:bg-[var(--rv-primary)] group-hover:text-[var(--rv-white)] transition"
+                                        className="text-3xl p-3 rounded-xl bg-[var(--rv-primary-light)] text-[var(--rv-primary)]  group-hover:bg-[var(--rv-primary)] group-hover:text-[var(--rv-white)] transition"
                                     >
                                         {item.icon}
                                     </motion.div>

@@ -4,18 +4,51 @@ import { useState } from "react";
 import Heading from "../ui/Heading";
 import Button from "../ui/Button";
 import { motion } from "framer-motion";
+import ContactForm from "./ContactForm";
 
-const contactInfo = [
-  { icon: "https://img.icons8.com/3d-fluency/94/telephone-handset.png", label: "Phone / WhatsApp", value: "+91 9039822000" },
-  { icon: "https://img.icons8.com/arcade/64/new-post--v1.png", label: "Email", value: "info@mutualfundsoftware.in" },
-  { icon: "https://img.icons8.com/arcade/64/address.png", label: "Office", value: "Krishan Vihar Colony, Nipania Road, Indore, Madhya Pradesh 452010" },
-  { icon: "https://img.icons8.com/3d-fluency/94/alarm-clock--v2.png", label: "Office Hours", value: "Mon–Sat: 10am – 7pm" },
-];
 
-export default function ContactSection() {
+export default function ContactSection({ siteData }) {
   const [form, setForm] = useState({
     name: "", phone: "", email: "", message: "",
   });
+
+  const contactInfo = [
+    {
+      icon: "https://img.icons8.com/3d-fluency/94/telephone-handset.png",
+
+      label: "Phone / WhatsApp",
+
+      value: `+91 ${siteData?.phone || ""}`,
+    },
+
+    {
+      icon: "https://img.icons8.com/arcade/64/new-post--v1.png",
+
+      label: "Email",
+
+      value:
+        siteData?.email ||
+        "info@mutualfundsoftware.in",
+    },
+
+    {
+      icon: "https://img.icons8.com/arcade/64/address.png",
+
+      label: "Office",
+
+      value:
+        siteData?.address || "",
+    },
+
+    {
+      icon: "https://img.icons8.com/3d-fluency/94/alarm-clock--v2.png",
+
+      label: "Office Hours",
+
+      value:
+        "Mon–Sat: 10am – 7pm",
+    },
+  ];
 
   return (
     <section className="w-full bg-[var(--rv-primary-light)] text-[var(--rv-text)] px-4 relative overflow-hidden">
@@ -27,7 +60,7 @@ export default function ContactSection() {
         className="absolute top-10 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-[var(--rv-primary)] blur-[120px] -z-10"
       ></motion.div>
 
-      <div className="max-w-7xl mx-auto main-section grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <div className="max-w-7xl mx-auto main-section grid grid-cols-1 md:grid-cols-2 gap-10">
 
         <motion.div
           initial={{ opacity: 0, x: -60 }}
@@ -54,12 +87,12 @@ export default function ContactSection() {
                 transition={{ delay: i * 0.1 }}
                 className="flex gap-4 items-center p-2 rounded-xl hover:bg-[var(--rv-primary-light)] transition border border-[var(--rv-border)]"
               >
-                <div className="w-12 h-12 rounded-xl bg-[var(--rv-card)] border border-[var(--rv-border)] flex items-center justify-center">
+                <div className="w-16 h-16 rounded-xl bg-[var(--rv-card)] border border-[var(--rv-border)] flex items-center justify-center">
                   <img src={c.icon} className="w-8 h-8" alt="" />
                 </div>
 
                 <div>
-                  <p className="text-xs uppercase tracking-widest opacity-60">
+                  <p className="uppercase tracking-widest opacity-60">
                     {c.label}
                   </p>
                   <p className="font-medium">{c.value}</p>
@@ -69,7 +102,7 @@ export default function ContactSection() {
           </div>
         </motion.div>
 
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, x: 60 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
@@ -138,8 +171,8 @@ export default function ContactSection() {
             </motion.div>
 
           </div>
-        </motion.div>
-
+        </motion.div> */}
+        <ContactForm title={'Book Free Consultation'} />
       </div>
     </section>
   );

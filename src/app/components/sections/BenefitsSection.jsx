@@ -36,7 +36,7 @@ export function BenefitsSection() {
           align="center"
         />
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
 
           {benefits.map((item, i) => (
             <motion.div
@@ -44,16 +44,10 @@ export function BenefitsSection() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
-              className="group p-5 rounded-xl border border-[var(--rv-border)] bg-[var(--rv-card)]
-              flex flex-col items-center text-center gap-3
-              hover:-translate-y-2 transition"
-            >
-              <div className="w-12 h-12 flex items-center justify-center rounded-xl 
-              bg-gradient-to-r from-[var(--rv-primary)] to-[var(--rv-secondary)] 
-              text-[var(--rv-white)] text-xl transition">
+              className="group p-5 rounded-xl border border-[var(--rv-border)] bg-[var(--rv-card)] flex flex-col items-center text-center gap-3 hover:-translate-y-2 transition"   >
+              <div className="w-12 h-12 flex items-center justify-center rounded-xl  bg-gradient-to-r from-[var(--rv-primary)] to-[var(--rv-secondary)]  text-[var(--rv-white)] text-xl transition">
                 {item.icon}
               </div>
-
               <h5 className="font-semibold">
                 {item.title}
               </h5>

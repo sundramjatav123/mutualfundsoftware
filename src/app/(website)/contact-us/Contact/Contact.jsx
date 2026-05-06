@@ -9,7 +9,7 @@ import Button from "@/app/components/ui/Button";
 import { validateForm } from "@/utils/validateForm";
 import Heading from "@/app/components/ui/Heading";
 
-const Contact = () => {
+const Contact = ({siteData}) => {
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -94,9 +94,9 @@ const Contact = () => {
         <div className="grid md:grid-cols-3 gap-6">
 
           {[
-            { icon: <FiPhone />, title: "Call Us", value: "+91 9039822000" },
-            { icon: <FiMail />, title: "Email Us", value: "info@mutualfundsoftware.in" },
-            { icon: <FiMapPin />, title: "Visit Us", value: "Krishan Vihar Colony, Nipania Road, Indore, Madhya Pradesh 452010" },
+            { icon: <FiPhone />, title: "Call Us", value: `+91 ${siteData?.phone || ""}`},
+            { icon: <FiMail />, title: "Email Us", value: siteData?.email ||""},
+            { icon: <FiMapPin />, title: "Visit Us", value:  siteData?.address || "" },
           ].map((item, i) => (
             <motion.div
               key={i}

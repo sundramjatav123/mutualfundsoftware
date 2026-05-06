@@ -72,8 +72,9 @@ export default function TestimonialsSection() {
                     <Image
                       src={t.image}
                       alt={t.name}
-                      fill
-                      className="object-cover object-top group-hover:scale-105 transition duration-300"
+                      width={500}
+                      height={400}
+                      className="object-cover w-full h-full object-top group-hover:scale-105 transition duration-300"
                     />
                   </motion.div>
 

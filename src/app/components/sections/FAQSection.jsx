@@ -7,30 +7,8 @@ import Button from "../ui/Button";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-const faqs = [
-  {
-    q: "What is mutual fund software?",
-    a: "It is a digital platform designed for Mutual Fund Distributors (MFDs) to manage clients, track portfolios, automate reporting, and grow their AUM efficiently from a single dashboard.",
-  },
-  {
-    q: "Who can use this platform?",
-    a: "This platform is built for Mutual Fund Distributors (MFDs), financial advisors, wealth managers, and RIAs who want to streamline operations and scale their advisory business.",
-  },
-  {
-    q: "Does it support all AMCs?",
-    a: "Yes, the platform integrates with all major AMCs in India, ensuring seamless transaction tracking, portfolio updates, and consolidated reporting.",
-  },
-  {
-    q: "Is training provided?",
-    a: "Absolutely. We provide onboarding assistance, guided training sessions, and ongoing support to help you get started quickly and use the platform effectively.",
-  },
-  {
-    q: "How can I get access?",
-    a: "You can request a free demo by clicking on the 'Book Free Demo' button. Our team will guide you through the platform and help you get started.",
-  },
-];
 
-export default function FAQSection() {
+export default function FAQSection({faqs}) {
   const [active, setActive] = useState(0);
 
   return (
@@ -56,7 +34,7 @@ export default function FAQSection() {
 
         <div className="w-full">
           <div className="flex flex-col gap-4">
-            {faqs.map((faq, index) => (
+            {faqs.reverse().map((faq, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 40 }}
@@ -72,9 +50,9 @@ export default function FAQSection() {
                   onClick={() => setActive(active === index ? null : index)}
                   className="flex justify-between items-center cursor-pointer"
                 >
-                  <h5 className="font-semibold">
-                    {index + 1}. {faq.q}
-                  </h5>
+                  <h6 className="font-semibold">
+                    {index + 1}. {faq?.question}
+                  </h6>
                   <motion.div
                     animate={{ rotate: active === index ? 90 : 0 }}
                     transition={{ duration: 0.3 }}
@@ -90,7 +68,7 @@ export default function FAQSection() {
                   }}
                   transition={{ duration: 0.3 }}
                   className="overflow-hidden">
-                  <p className="opacity-80 text-lg pt-3">{faq.a}</p>
+                  <p className="opacity-80 text-lg pt-3">{faq?.answer}</p>
                 </motion.div>
 
               </motion.div>

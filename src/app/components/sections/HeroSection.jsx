@@ -2,10 +2,11 @@
 
 import Button from "../ui/Button";
 import { motion } from "framer-motion";
-import Tilt from "react-parallax-tilt";
 import { FiCheck, FiArrowRight } from "react-icons/fi";
+import ContactForm from "./ContactForm";
 
 export default function HeroSection() {
+
   return (
     <section className="w-full px-4 bg-[var(--rv-bg)] text-[var(--rv-text)] relative overflow-hidden">
       <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-[var(--rv-primary)] opacity-10 blur-[120px]" />
@@ -73,7 +74,7 @@ export default function HeroSection() {
           </p>
         </div>
 
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, scale: 0.9, y: 40 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -144,7 +145,8 @@ export default function HeroSection() {
           </Tilt>
 
           <div className="absolute -z-10 inset-0 bg-[var(--rv-primary)] opacity-20 blur-3xl rounded-full" />
-        </motion.div>
+        </motion.div> */}
+        <ContactForm />
       </div>
     </section>
   );

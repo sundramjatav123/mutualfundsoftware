@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 
@@ -10,11 +12,14 @@ const Button = ({
   className = "",
   link,
   disabled = false,
+  loading = false,
   variant = "primary",
 }) => {
+
   const label = text ?? children ?? "Click Me";
 
   const variants = {
+
     primary:
       "bg-[var(--rv-primary)] text-white hover:bg-[var(--rv-secondary)]",
 
@@ -29,6 +34,7 @@ const Button = ({
 
     gradient:
       "bg-gradient-to-l to-[var(--rv-secondary)] from-[var(--rv-primary)] text-white hover:from-[var(--rv-secondary)] hover:to-[var(--rv-primary)]",
+
   };
 
   const baseClass = `
@@ -36,42 +42,62 @@ const Button = ({
     md:px-5 md:py-2.5 px-3 py-2
     text-sm md:text-base
     rounded-lg
-    transition-all duration-600
-    inline-flex items-center justify-center
-    font-semibold
+    transition-all duration-300
+    inline-flex items-center justify-center gap-2
     shadow-sm hover:shadow-md
   `;
 
   const content = (
     <>
-      {Icon && <Icon className="mr-2 text-lg" />}
-      {label}
+
+      {loading && (
+        <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+
+      )}
+
+      {!loading && Icon && (
+        <Icon className="text-lg" />
+      )}
+
+      <span>
+        {label}
+      </span>
+
     </>
   );
 
   if (link) {
+
     return (
       <Link
         href={link}
         className={`${baseClass} ${className} ${
-          disabled ? "opacity-60 pointer-events-none" : ""
+          disabled
+            ? "opacity-60 pointer-events-none"
+            : ""
         }`}
       >
+
         {content}
+
       </Link>
     );
+
   }
 
   return (
     <button
       type={type}
       onClick={onClick}
-      disabled={disabled}
+      disabled={disabled || loading}
       className={`${baseClass} ${className} ${
-        disabled ? "opacity-60 cursor-not-allowed" : ""
+        disabled || loading
+          ? "opacity-60 cursor-not-allowed pointer-events-none"
+          : "hover:scale-[1.02]"
       }`}
     >
       {content}
+
     </button>
   );
 };

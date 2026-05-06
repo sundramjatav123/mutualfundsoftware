@@ -7,18 +7,25 @@ import FeaturesSection from "../components/sections/FeaturesSection";
 import HowItWorks from "../components/sections/HowItWorks";
 import StatsSection from "../components/sections/StatsSection";
 import TestimonialsSection from "../components/sections/TestimonialsSection";
-import WhySection from "../components/sections/WhySection";
+import SolutionSection from "../components/sections/SolutionSection";
 import ComparisonSection from "../components/sections/ComparisonSection";
 import { AudienceSection } from "../components/sections/AudienceSection";
 import { BenefitsSection } from "../components/sections/BenefitsSection";
+import ProblemsSection from "../components/sections/ProblemsSection";
+import { getFQAsData, getSiteData } from "@/lib/functions";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const siteData = await getSiteData();
+  const faqs = await getFQAsData();
+  console.log(faqs);
+  
   return (
     <div className="bg-[var(--rv-bg)] text-[var(--rv-text)]">
       <HeroSection />
       {/* <AboutSection /> */}
       <StatsSection />
-      <WhySection />
+      <ProblemsSection />
+      <SolutionSection />
       <FeaturesSection />
       <BenefitsSection />
       <AudienceSection />
@@ -26,8 +33,8 @@ export default function HomePage() {
       <TestimonialsSection />
       <BlogSection />
       <ComparisonSection />
-      <FAQSection />
-      <ContactSection />
+      <FAQSection faqs={faqs}/>
+      <ContactSection siteData={siteData}/>
     </div>
   );
 }

@@ -18,9 +18,7 @@ const TextareaField = ({
         onChange={onChange}
         placeholder={placeholder}
         rows={4}
-        className={`p-3 rounded-md border bg-transparent focus:outline-none 
-        ${error ? "border--[var(--rv-red)]" : "border-[var(--rv-border)]"}`}
-      />
+        className={`p-3 rounded-md border bg-transparent focus:outline-none   ${error ? "border--[var(--rv-red)]" : "border-[var(--rv-border)]"}`}/>
 
       {error && <span className="text-xs text--[var(--rv-red)]">{error}</span>}
     </div>

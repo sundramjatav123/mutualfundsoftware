@@ -40,13 +40,9 @@ export function AudienceSection() {
                             initial={{ opacity: 0, y: 40 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: i * 0.1 }}
-                            className="p-6 rounded-xl border border-[var(--rv-border)] bg-[var(--rv-card)]
-              flex flex-col items-center text-center gap-4
-              hover:-translate-y-2 transition relative"
+                            className="p-6 rounded-xl border border-[var(--rv-border)] bg-[var(--rv-card)]  flex flex-col items-center text-center gap-4   hover:-translate-y-2 transition relative"
                         >
-                            <div className="w-14 h-14 flex items-center justify-center rounded-xl 
-              bg-gradient-to-r from-[var(--rv-primary)] to-[var(--rv-secondary)] 
-              text-[var(--rv-white)] text-xl">
+                            <div className="w-14 h-14 flex items-center justify-center rounded-xl  bg-gradient-to-r from-[var(--rv-primary)] to-[var(--rv-secondary)]  text-[var(--rv-white)] text-xl">
                                 {item.icon}
                             </div>
 

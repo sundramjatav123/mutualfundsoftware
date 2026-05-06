@@ -9,17 +9,7 @@ const Innerpage = ({ title }) => {
 
   return (
     <section className="relative w-full overflow-hidden px-1 md:px-2.5 bg-[var(--rv-bg)]">
-
-      {/* BG */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: "url('/images/page-header-bg.jpg')",
-        }}
-      ></div>
-
       <div className="relative z-10 max-w-7xl mx-auto main-section text-[var(--rv-text)] border border-[var(--rv-border)] rounded-xl">
-
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[var(--rv-primary-light)] to-transparent opacity-90"></div>
         <button
           onClick={() => router.back()}
