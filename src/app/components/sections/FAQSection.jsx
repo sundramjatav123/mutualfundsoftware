@@ -34,10 +34,7 @@ export default function FAQSection({ faqs }) {
 
         <div className="w-full">
           <div className="flex flex-col gap-4">
-            {faqs
-              .slice()
-              .reverse()
-              .map((faq, index) => (
+            {faqs.map((faq, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 40 }}

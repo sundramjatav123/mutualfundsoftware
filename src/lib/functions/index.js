@@ -30,7 +30,10 @@ export async function getFQAsData() {
   try {
     await connectDB();
     const data =
-      await Faq.find().lean();
+      await Faq.find().sort({
+        createdAt: -1,
+      })
+        .lean();
     if (!data) {
       return toPlain({});
     }
