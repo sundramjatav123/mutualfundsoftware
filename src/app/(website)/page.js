@@ -17,7 +17,6 @@ import { getFQAsData, getSiteData } from "@/lib/functions";
 export default async function HomePage() {
   const siteData = await getSiteData();
   const faqs = await getFQAsData();
-  console.log(faqs);
   
   return (
     <div className="bg-[var(--rv-bg)] text-[var(--rv-text)]">
