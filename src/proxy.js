@@ -11,18 +11,15 @@ export function proxy(request) {
 
   const isLoginPage = pathname === "/login";
 
-  // NO TOKEN
   if (!token && isAdminRoute) {
-
     return NextResponse.redirect(
       new URL("/login", request.url)
     );
 
   }
 
-  // VERIFY TOKEN
-  if (token) {
 
+  if (token) {
     try {
 
       jwt.verify(

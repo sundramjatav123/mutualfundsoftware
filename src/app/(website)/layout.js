@@ -16,7 +16,6 @@ export default async function WebsiteLayout({ children }) {
       disableTransitionOnChange
     >
       <div className="flex flex-col bg-[var(--rv-bg)] text-[var(--rv-text)] min-h-screen">
-        <ThemeToggle />
         <Navbar />
         <ScrollToTop />
         <main className="flex-1">

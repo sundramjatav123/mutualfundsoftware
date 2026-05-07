@@ -7,6 +7,8 @@ import TextareaField from "../ui/TextareaField";
 import Button from "../ui/Button";
 import { validateForm } from "@/utils/validateForm";
 import { FiArrowRight } from "react-icons/fi";
+import { showAlert } from "@/utils/swalConfig";
+
 
 const formFields = [
     {
@@ -53,7 +55,6 @@ const formFields = [
 ];
 
 export default function ContactForm({ title }) {
-
     const initialState = formFields.reduce((acc, field) => {
         acc[field.name] = "";
         return acc;
@@ -61,6 +62,7 @@ export default function ContactForm({ title }) {
 
     const [formData, setFormData] = useState(initialState);
     const [errors, setErrors] = useState({});
+    const [loading, setLoading] = useState(false);
     const handleChange = (e) => {
         const { name, value } = e.target;
 
@@ -84,7 +86,8 @@ export default function ContactForm({ title }) {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
+
         e.preventDefault();
         const validationErrors = validateForm(formData);
         if (Object.keys(validationErrors).length > 0) {
@@ -92,11 +95,46 @@ export default function ContactForm({ title }) {
             return;
         }
         setErrors({});
-        console.log(formData);
-        alert("Form Submitted Successfully");
-        setFormData(initialState);
-    };
+        try {
+            setLoading(true);
+            const response = await fetch("/api/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            });
 
+            const data = await response.json();
+            if (data.success) {
+
+                showAlert({
+                    icon: "success",
+                    title: "Success",
+                    text: "Form Submitted Successfully",
+                });
+
+                setFormData(initialState);
+
+            } else {
+                showAlert({
+                    icon: "error",
+                    title: "Error",
+                    text: data.message,
+                });
+            }
+        } catch (error) {
+            console.log(error);
+            showAlert({
+                icon: "error",
+                title: "Server Error",
+                text: "Unable to submit form",
+            });
+        } finally {
+            setLoading(false);
+        }
+
+    };
     return (
         <div className="w-full h-full">
 
@@ -154,7 +192,7 @@ export default function ContactForm({ title }) {
 
                     return null;
                 })}
-                <Button Icon={FiArrowRight} text="Book A Free Demo" />
+                <Button type="submit" loading={loading} Icon={FiArrowRight} text="Book A Free Demo" />
             </form>
         </div>
     );

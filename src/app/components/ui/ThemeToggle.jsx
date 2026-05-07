@@ -17,7 +17,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="fixed top-1/2 right-1 -translate-y-1/2 z-50 w-16 h-9 flex items-center px-1 rounded-full
+      className="z-50 w-16 h-9 flex items-center px-1 rounded-full
       bg-[var(--rv-bg)] border border-[var(--rv-border)] backdrop-blur-xl shadow-lg transition hover:scale-105"
     >
       <div

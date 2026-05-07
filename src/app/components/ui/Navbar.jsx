@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Button from "./Button";
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -26,18 +27,18 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 p-1 md:p-2.5 bg-[var(--rv-bg)]">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-2 py-2 rounded-xl
       bg-[var(--rv-bg)] backdrop-blur-xl border border-[var(--rv-border)]">
-        <div>
-          <Link href={'/'}>
+        <div className="h-12 sm:h-14 md:h-16">
+          <Link href={'/'} >
             <img
               src={resolvedTheme === "dark" ? "/images/logo1.png" : "/images/logo.png"}
               alt="Logo"
-              className="h-16"
+              className="w-full h-full object-cover"
             />
           </Link>
         </div>
 
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-5 lg:gap-8">
           {navLinks.map((item) => {
             const active = pathname === item.link;
 
@@ -62,16 +63,9 @@ export default function Navbar() {
 
         <div className="flex items-center gap-3">
           <div className="hidden md:block">
-            <Button text="Free Consultation" link="/contact-us" />
+            <ThemeToggle />
           </div>
-
-          <button
-            onClick={() => setOpen(!open)}
-            className="md:hidden text-xl text-[var(--rv-text)] transition"
-          >
-            <Button text="Free Consultation" link="/contact-us" />
-          </button>
-
+          <Button text="Free Consultation" link="/contact-us" />
         </div>
       </div>
 

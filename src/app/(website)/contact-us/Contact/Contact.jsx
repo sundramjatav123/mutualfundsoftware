@@ -94,9 +94,9 @@ const Contact = ({ siteData }) => {
         <div className="grid md:grid-cols-3 gap-6">
 
           {[
-            { icon: <FiPhone />, title: "Call Us", value: `+91 ${siteData?.phone || ""}` },
-            { icon: <FiMail />, title: "Email Us", value: siteData?.email || "" },
-            { icon: <FiMapPin />, title: "Visit Us", value: siteData?.address || "" },
+            { icon: <FiPhone />, title: "Call Us", value: siteData?.phone || "+91 9874563210" },
+            { icon: <FiMail />, title: "Email Us", value: siteData?.email || "info@mutualfundsoftware.in" },
+            { icon: <FiMapPin />, title: "Visit Us", value: siteData?.address || "Indore, 452010 (MP)" },
           ].map((item, i) => (
             <motion.div
               key={i}
@@ -114,7 +114,7 @@ const Contact = ({ siteData }) => {
                 item.title === "Visit Us" ? (
 
                   <div
-                    className="  text-[var(--rv-white)]  opacity-80 leading-7 [&_*]:m-0 [&_*]:whitespace-normal  [&_*]:break-words [&_*]:overflow-wrap-anywhere "
+                    className="opacity-80 leading-7 [&_*]:m-0 [&_*]:whitespace-normal  [&_*]:break-words [&_*]:overflow-wrap-anywhere "
                     dangerouslySetInnerHTML={{
                       __html:
                         item.value

@@ -67,7 +67,7 @@ export default function Footer({
               Mobile :-
             </span>
             <span className="opacity-80 break-words">
-              +91 {siteData?.phone || ""}
+            {siteData?.phone || ""}
             </span>
           </div>
         ),

@@ -18,7 +18,7 @@ export default function ContactSection({ siteData }) {
 
       label: "Phone / WhatsApp",
 
-      value: `+91 ${siteData?.phone || ""}`,
+      value: siteData?.phone || "+91 9874563210",
     },
 
     {
@@ -37,7 +37,7 @@ export default function ContactSection({ siteData }) {
       label: "Office",
 
       value:
-        siteData?.address || "",
+        siteData?.address || "Indore MP",
 
       isHtml: true,
 
@@ -103,7 +103,7 @@ export default function ContactSection({ siteData }) {
                     c.isHtml ? (
 
                       <div
-                        className="  text-[var(--rv-white)]  opacity-80 leading-7 [&_*]:m-0 [&_*]:whitespace-normal  [&_*]:break-words [&_*]:overflow-wrap-anywhere "
+                        className="opacity-80 leading-7 [&_*]:m-0 [&_*]:whitespace-normal  [&_*]:break-words [&_*]:overflow-wrap-anywhere "
                         dangerouslySetInnerHTML={{
                           __html:
                             c.value

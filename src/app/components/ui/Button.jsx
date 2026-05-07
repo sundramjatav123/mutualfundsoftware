@@ -39,7 +39,7 @@ const Button = ({
 
   const baseClass = `
     ${variants[variant]}
-    md:px-5 md:py-2.5 px-3 py-2
+    md:px-5 px-3 py-2.5 md:py-3
     text-sm md:text-base
     rounded-lg
     transition-all duration-300
