@@ -55,13 +55,13 @@ const Button = ({
 
       )}
 
+      <span>
+        {label}
+      </span>
       {!loading && Icon && (
         <Icon className="text-lg" />
       )}
 
-      <span>
-        {label}
-      </span>
 
     </>
   );

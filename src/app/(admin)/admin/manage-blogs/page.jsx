@@ -4,13 +4,14 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Button from "@/app/components/ui/Button";
 import InputField from "@/app/components/ui/InputField";
-import TextareaField from "@/app/components/ui/TextareaField";
 
 import {
   FiEdit2,
   FiTrash2,
   FiX,
 } from "react-icons/fi";
+import TextEditor from "@/app/components/ui/TextEditor";
+import { showAlert } from "@/utils/swalConfig";
 
 
 const blogFields = [
@@ -147,6 +148,14 @@ export default function Page() {
 
       setEditId(null);
       setOpenModal(false);
+      showAlert({
+        icon: "success",
+        title: "Success",
+        text: editId
+          ? "Blog updated successfully"
+          : "Blog added successfully",
+      });
+
     } catch (error) {
       console.log(error);
     }
@@ -176,14 +185,25 @@ export default function Page() {
         }
       );
 
-      const data =
-        await response.json();
+      const data = await response.json();
       if (!response.ok) {
-        alert(data.message);
+        showAlert({
+          icon: "error",
+          title: "Failed",
+          text:
+            data.message ||
+            "Delete failed",
+        });
         return;
       }
       await fetchBlogs();
       setDeleteModal(false);
+      showAlert({
+        icon: "success",
+        title: "Deleted",
+        text:
+          "Blog deleted successfully",
+      });
 
     } catch (error) {
       console.log(error);
@@ -244,8 +264,12 @@ export default function Page() {
                         {blog.category}
                       </span>
                     </td>
-                    <td className="p-5 opacity-70 line-clamp-2">
-                      {blog.description}
+                    <td className="p-5 opacity-70">
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: blog.description,
+                        }}
+                      />
                     </td>
                     <td className="p-5">
                       <div className="flex items-center justify-end gap-3">
@@ -355,24 +379,17 @@ export default function Page() {
                   ) {
 
                     return (
-                      <TextareaField
+                      <TextEditor
                         key={i}
-                        label={
-                          field.label
-                        }
-                        name={
-                          field.name
-                        }
+                        label={field.label}
                         value={
-                          formData[
-                          field.name
-                          ]
+                          formData.description
                         }
-                        onChange={
-                          handleChange
-                        }
-                        placeholder={
-                          field.placeholder
+                        onChange={(value) =>
+                          setFormData({
+                            ...formData,
+                            description: value,
+                          })
                         }
                       />
                     );

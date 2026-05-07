@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 
 import InputField from "@/app/components/ui/InputField";
-import TextareaField from "@/app/components/ui/TextareaField";
 import Button from "@/app/components/ui/Button";
 
 import { showAlert } from "@/utils/swalConfig";
+import TextEditor from "@/app/components/ui/TextEditor";
 
 const settingsFields = [
   {
@@ -15,7 +15,13 @@ const settingsFields = [
     type: "text",
     placeholder: "Enter website name",
   },
-
+  {
+    label: "Website Domain",
+    name: "websiteDomain",
+    type: "text",
+    placeholder:
+      "Enter website domain",
+  },
   {
     label: "Phone Number",
     name: "phone",
@@ -42,6 +48,13 @@ const settingsFields = [
     name: "address",
     type: "textarea",
     placeholder: "Enter full address",
+  },
+  {
+    label: "Website Description",
+    name: "description",
+    type: "textarea",
+    placeholder:
+      "Enter website description",
   },
 ];
 
@@ -87,6 +100,11 @@ export default function AdminSettingsForm() {
             data.data.email || "",
           address:
             data.data.address || "",
+          websiteDomain:
+            data.data.websiteDomain || "",
+
+          description:
+            data.data.description || "",
         });
       }
     } catch (error) {
@@ -203,23 +221,17 @@ export default function AdminSettingsForm() {
                   className="md:col-span-2"
                 >
 
-                  <TextareaField
-                    label={
-                      field.label
-                    }
-                    name={
-                      field.name
-                    }
+                  <TextEditor
+                    label={field.label}
                     value={
-                      formData[
-                        field.name
-                      ]
+                      formData[field.name]
                     }
-                    onChange={
-                      handleChange
-                    }
-                    placeholder={
-                      field.placeholder
+                    onChange={(value) =>
+                      setFormData({
+                        ...formData,
+                        [field.name]:
+                          value,
+                      })
                     }
                   />
 
@@ -236,7 +248,7 @@ export default function AdminSettingsForm() {
                 name={field.name}
                 value={
                   formData[
-                    field.name
+                  field.name
                   ]
                 }
                 onChange={

@@ -34,13 +34,17 @@ export async function POST(req) {
       whatsapp,
       email,
       address,
+      description,
+      websiteDomain,
     } = body;
     if (
       !websiteName ||
       !phone ||
       !whatsapp ||
       !email ||
-      !address
+      !address ||
+      !description ||
+      !websiteDomain
     ) {
 
       return NextResponse.json(
@@ -64,6 +68,9 @@ export async function POST(req) {
       settings.websiteName =
         websiteName;
 
+      settings.websiteDomain =
+        websiteDomain;
+
       settings.phone = phone;
 
       settings.whatsapp =
@@ -73,6 +80,8 @@ export async function POST(req) {
 
       settings.address =
         address;
+      settings.description =
+        description;
 
       await settings.save();
 
@@ -86,6 +95,8 @@ export async function POST(req) {
           whatsapp,
           email,
           address,
+          description,
+          websiteDomain
         });
 
     }

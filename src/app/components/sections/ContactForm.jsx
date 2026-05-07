@@ -6,6 +6,7 @@ import SelectField from "../ui/SelectField";
 import TextareaField from "../ui/TextareaField";
 import Button from "../ui/Button";
 import { validateForm } from "@/utils/validateForm";
+import { FiArrowRight } from "react-icons/fi";
 
 const formFields = [
     {
@@ -51,7 +52,7 @@ const formFields = [
     },
 ];
 
-export default function ContactForm({title}) {
+export default function ContactForm({ title }) {
 
     const initialState = formFields.reduce((acc, field) => {
         acc[field.name] = "";
@@ -101,8 +102,11 @@ export default function ContactForm({title}) {
 
             <form
                 onSubmit={handleSubmit}
-                className="flex flex-col gap-5 p-4 md:p-6 rounded-2xl border border-[var(--rv-border)] bg-[var(--rv-card)]" >
-                <h4>{title}</h4>
+                className="flex flex-col gap-3 p-4 md:p-6 rounded-2xl border border-[var(--rv-border)] bg-[var(--rv-card)]" >
+                <div>
+                    <h4>{title}</h4>
+                    <p>No obligations. Get your personalised investment roadmap.</p>
+                </div>
                 {formFields.map((field, i) => {
                     if (field.type === "input") {
                         return (
@@ -150,7 +154,7 @@ export default function ContactForm({title}) {
 
                     return null;
                 })}
-                <Button text="Book Free Demo 🚀" />
+                <Button Icon={FiArrowRight} text="Book A Free Demo" />
             </form>
         </div>
     );

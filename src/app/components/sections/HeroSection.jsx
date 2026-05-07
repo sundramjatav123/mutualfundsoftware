@@ -146,7 +146,11 @@ export default function HeroSection() {
 
           <div className="absolute -z-10 inset-0 bg-[var(--rv-primary)] opacity-20 blur-3xl rounded-full" />
         </motion.div> */}
-        <ContactForm />
+        <div className="flex items-end justify-end">
+          <div className="lg:w-4/5 w-full ">
+            <ContactForm  title={'Book Free Consultation'}/>
+          </div>
+        </div>
       </div>
     </section>
   );

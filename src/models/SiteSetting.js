@@ -7,6 +7,11 @@ const siteSettingSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    websiteDomain: {
+      type: String,
+      required: true,
+      trim: true,
+    },
 
     phone: {
       type: String,
@@ -28,6 +33,11 @@ const siteSettingSchema = new mongoose.Schema(
     },
 
     address: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    description: {
       type: String,
       required: true,
       trim: true,

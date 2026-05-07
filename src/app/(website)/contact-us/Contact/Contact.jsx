@@ -9,7 +9,7 @@ import Button from "@/app/components/ui/Button";
 import { validateForm } from "@/utils/validateForm";
 import Heading from "@/app/components/ui/Heading";
 
-const Contact = ({siteData}) => {
+const Contact = ({ siteData }) => {
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -86,7 +86,7 @@ const Contact = ({siteData}) => {
             />
 
             <div>
-              <Button text="Send Message 🚀" type="submit" />
+              <Button text="Send Message" type="submit" />
             </div>
           </form>
         </motion.div>
@@ -94,9 +94,9 @@ const Contact = ({siteData}) => {
         <div className="grid md:grid-cols-3 gap-6">
 
           {[
-            { icon: <FiPhone />, title: "Call Us", value: `+91 ${siteData?.phone || ""}`},
-            { icon: <FiMail />, title: "Email Us", value: siteData?.email ||""},
-            { icon: <FiMapPin />, title: "Visit Us", value:  siteData?.address || "" },
+            { icon: <FiPhone />, title: "Call Us", value: `+91 ${siteData?.phone || ""}` },
+            { icon: <FiMail />, title: "Email Us", value: siteData?.email || "" },
+            { icon: <FiMapPin />, title: "Visit Us", value: siteData?.address || "" },
           ].map((item, i) => (
             <motion.div
               key={i}
@@ -110,7 +110,31 @@ const Contact = ({siteData}) => {
                 {item.icon}
               </div>
               <h6 className="font-semibold">{item.title}</h6>
-              <p className="opacity-70">{item.value}</p>
+              {
+                item.title === "Visit Us" ? (
+
+                  <div
+                    className="  text-[var(--rv-white)]  opacity-80 leading-7 [&_*]:m-0 [&_*]:whitespace-normal  [&_*]:break-words [&_*]:overflow-wrap-anywhere "
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        item.value
+                          ?.replace(
+                            /&nbsp;/g,
+                            " "
+                          ) || "",
+                    }}
+                  />
+
+                ) : (
+
+                  <p className="opacity-70 break-words">
+
+                    {item.value}
+
+                  </p>
+
+                )
+              }
             </motion.div>
           ))}
 
