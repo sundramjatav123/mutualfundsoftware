@@ -28,7 +28,6 @@ export default function FAQSection({ faqs }) {
               align="start"
             />
 
-            <Button text="View All FAQ" link="/faq" />
           </div>
         </motion.div>
 
@@ -40,7 +39,7 @@ export default function FAQSection({ faqs }) {
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className={`border rounded-xl p-4 transition-all duration-300 
+                className={`border rounded-xl p-4 transition-all duration-300  flex flex-col
                 ${active === index
                     ? "bg-[var(--rv-card)] shadow-md border-[var(--rv-primary)]"
                     : "border-[var(--rv-border)] hover:shadow-sm"
@@ -69,7 +68,7 @@ export default function FAQSection({ faqs }) {
                   transition={{ duration: 0.3 }}
                   className="overflow-hidden">
                   <div
-                    className="  text-[var(--rv-white)]  opacity-80 leading-7 [&_*]:m-0 [&_*]:whitespace-normal  [&_*]:break-words [&_*]:overflow-wrap-anywhere "
+                    className="opacity-80 pt-4 leading-7 [&_*]:m-0 [&_*]:whitespace-normal  [&_*]:break-words [&_*]:overflow-wrap-anywhere "
                     dangerouslySetInnerHTML={{
                       __html:
                         faq?.answer 

@@ -3,7 +3,7 @@
 import Button from "../ui/Button";
 import { motion } from "framer-motion";
 import { FiCheck, FiArrowRight } from "react-icons/fi";
-import ContactForm from "./ContactForm";
+import Tilt from "react-parallax-tilt";
 
 export default function HeroSection() {
 
@@ -74,7 +74,7 @@ export default function HeroSection() {
           </p>
         </div>
 
-        {/* <motion.div
+        <motion.div
           initial={{ opacity: 0, scale: 0.9, y: 40 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -145,12 +145,8 @@ export default function HeroSection() {
           </Tilt>
 
           <div className="absolute -z-10 inset-0 bg-[var(--rv-primary)] opacity-20 blur-3xl rounded-full" />
-        </motion.div> */}
-        <div className="flex items-end justify-end">
-          <div className="lg:w-4/5 w-full ">
-            <ContactForm  title={'Book Free Consultation'}/>
-          </div>
-        </div>
+        </motion.div>
+      
       </div>
     </section>
   );

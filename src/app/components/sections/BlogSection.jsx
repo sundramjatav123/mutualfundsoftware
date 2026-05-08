@@ -4,34 +4,9 @@ import Link from "next/link";
 import Heading from "../ui/Heading";
 import { motion } from "framer-motion";
 
-const posts = [
-  {
-    emoji: "📊",
-    img:"https://images.unsplash.com/photo-1638342863994-ae4eee256688?q=80&w=1170&auto=format&fit=crop",
-    tag: "SIP Basics",
-    title: "₹1,000/month se kaise banao ₹1 Crore ka corpus?",
-    meta: "15 min read • Beginners ke liye",
-    slug: "/blogs/sip-1000-to-1crore",
-  },
-  {
-    emoji: "💰",
-    img:"https://images.unsplash.com/photo-1579227113447-f1e32cc6bd42?q=80&w=2082&auto=format&fit=crop",
-    tag: "Tax Planning",
-    title: "ELSS vs PPF vs NSC — Konsa better hai 2024 mein?",
-    meta: "10 min read • Section 80C Guide",
-    slug: "/blogs/elss-vs-ppf-vs-nsc",
-  },
-  {
-    emoji: "🧠",
-    img:"https://images.unsplash.com/photo-1642052502780-8ee67e3bf930?q=80&w=1170&auto=format&fit=crop",
-    tag: "Market Basics",
-    title: "Market crash mein ghabrana nahi — SIP investors ke liye guide",
-    meta: "8 min read • Beginner Friendly",
-    slug: "/blogs/market-crash-sip-guide",
-  },
-];
 
-export default function BlogSection() {
+export default function BlogSection({ blogs }) {
+
   return (
     <section className="w-full bg-[var(--rv-bg)] px-4 text-[var(--rv-text)] overflow-hidden">
       <div className="max-w-7xl mx-auto main-section flex flex-col gap-5 md:gap-8">
@@ -48,7 +23,7 @@ export default function BlogSection() {
           />
         </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {posts.map((p, i) => (
+          {blogs.map((p, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 60 }}
@@ -56,13 +31,12 @@ export default function BlogSection() {
               transition={{ delay: i * 0.15 }}
             >
               <Link
-                href={p.slug}
+                href={`/blogs/${encodeURIComponent(p?.title)}`}
                 className="group border border-[var(--rv-border)] rounded-xl overflow-hidden hover:-translate-y-2 transition-all duration-300 block bg-[var(--rv-card)]"
               >
-
                 <div className="h-80 overflow-hidden relative">
                   <img
-                    src={p.img}
+                    src={p?.image}
                     className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
                     alt=""
                   />
@@ -70,16 +44,20 @@ export default function BlogSection() {
                 </div>
 
                 <div className="p-4 flex flex-col gap-3">
-                  <p className="font-bold uppercase tracking-widest text-[var(--rv-primary)] flex items-center gap-2">
-                    <span className="text-lg">{p.emoji}</span>
-                    {p.tag}
-                  </p>
                   <h6 className="font-semibold leading-6 group-hover:text-[var(--rv-primary)] transition">
                     {p.title}
                   </h6>
-                  <p className="opacity-80">
-                    {p.meta}
-                  </p>
+                  <div
+                    className="opacity-80 leading-7 line-clamp-2 [&_*]:m-0 [&_*]:whitespace-normal  [&_*]:break-words [&_*]:overflow-wrap-anywhere "
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        p.description
+                          ?.replace(
+                            /&nbsp;/g,
+                            " "
+                          ) || "",
+                    }}
+                  />
                 </div>
               </Link>
             </motion.div>

@@ -15,32 +15,32 @@ import {
 
 const features = [
   {
-    icon: <FiTrendingUp />,
+    icon: '/images/1.webp',
     title: "Client Portfolio Tracking",
     desc: "Track all investments in one dashboard",
   },
   {
-    icon: <FiFileText />,
+    icon: '/images/2.webp',
     title: "Automated Reports & Alerts",
     desc: "Instant reports with smart notifications",
   },
   {
-    icon: <FiTarget />,
+    icon: '/images/3.webp',
     title: "Goal-Based Planning",
     desc: "Align investments with life goals",
   },
   {
-    icon: <FiPercent />,
+    icon: '/images/4.webp',
     title: "Paperless Transactions",
     desc: "100% digital onboarding & execution",
   },
   {
-    icon: <FiShield />,
+    icon: '/images/5.webp',
     title: "Compliance & KYC Tools",
     desc: "Stay compliant with built-in workflows",
   },
   {
-    icon: <FiSmartphone />,
+    icon: '/images/6.webp',
     title: "White-Labeled Mobile App",
     desc: "Your own branded client app",
   },
@@ -77,11 +77,8 @@ export default function FeaturesSection() {
               <div className="absolute inset-0 bg-gradient-to-br from-[var(--rv-primary)] to-[var(--rv-secondary)] opacity-0 group-hover:opacity-100 transition duration-300 z-0"></div>
 
               <div className="relative z-10 flex flex-col gap-3">
-
-                <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-[var(--rv-primary)] text-[var(--rv-white)] text-xl group-hover:bg-[var(--rv-white)] group-hover:text-[var(--rv-primary)] transition">
-
-                  {item.icon}
-
+                <div className="w-40 h-40">
+                  <img src={item.icon} className="w-full h-full object-cover" alt="" />
                 </div>
 
                 <h5 className="font-semibold group-hover:text-[var(--rv-white)] transition">

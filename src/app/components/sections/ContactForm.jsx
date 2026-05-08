@@ -140,7 +140,7 @@ export default function ContactForm({ title }) {
 
             <form
                 onSubmit={handleSubmit}
-                className="flex flex-col gap-3 p-4 md:p-6 rounded-2xl border border-[var(--rv-border)] bg-[var(--rv-card)]" >
+                className="flex flex-col gap-3 p-4 md:p-6 rounded-xl border border-[var(--rv-border)] bg-[var(--rv-card)]" >
                 <div>
                     <h4>{title}</h4>
                     <p>No obligations. Get your personalised investment roadmap.</p>

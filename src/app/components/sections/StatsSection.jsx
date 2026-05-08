@@ -12,10 +12,10 @@ export default function StatsSection() {
   if (!mounted) return null;
 
   const stats = [
-    { num: "1,000+", label: "Active MFDs" },
-    { num: "₹500Cr+", label: "AUM Managed via Platform" },
-    { num: "50,000+", label: "Investor Portfolios" },
-    { num: "99.9%", label: "Platform Uptime" },
+    { num: "1,000+", label: "Active MFDs", img: "/images/stats/1.webp" },
+    { num: "₹500Cr+", label: "AUM Managed via Platform" , img: "/images/stats/2.webp" },
+    { num: "50,000+", label: "Investor Portfolios" , img: "/images/stats/3.png" },
+    { num: "99.9%", label: "Platform Uptime" , img: "/images/stats/4.webp" },
   ];
   const logos =
     resolvedTheme === "dark"
@@ -71,6 +71,10 @@ export default function StatsSection() {
                 {i !== 0 && (
                   <span className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-full bg-[var(--rv-border)]"></span>
                 )}
+
+                <div className="w-24 h-24 bg-[var(--rv-white)] p-2 rounded-xl">
+                  <img src={s?.img} className="w-full h-full object-cover" alt="" />
+                </div>
 
                 <motion.h2
                   initial={{ scale: 0.8 }}

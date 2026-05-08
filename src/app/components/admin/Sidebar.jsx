@@ -165,14 +165,14 @@ export default function Sidebar() {
             <aside
                 className={`bg-[var(--rv-bg)] top-0 left-0 z-50 h-screen border-r border-[var(--rv-border)] transform transition-all duration-300 ease-in-out ${
                     isMobile
-                        ? `fixed w-72 ${
+                        ? `fixed min-w-72 ${
                               sidebarOpen
                                   ? "translate-x-0"
                                   : "-translate-x-full"
                           }`
                         : `relative ${
                               sidebarOpen
-                                  ? "w-72"
+                                  ? "min-w-72"
                                   : "w-0 -ml-0"
                           }`
                 } flex flex-col overflow-hidden`}

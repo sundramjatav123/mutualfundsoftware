@@ -1,27 +1,62 @@
 import { NextResponse } from "next/server";
+
 import connectDB from "@/lib/mongodb";
+
 import Blog from "@/models/Blog";
 
-export async function PUT(req, context) {
+import imagekit from "@/lib/imagekit";
+
+export async function PUT(
+  req,
+  { params }
+) {
   try {
+
     await connectDB();
-    const { id } =
-      await context.params;
-    const body = await req.json();
-    const {
+
+    const data =
+      await req.formData();
+
+    const title =
+      data.get("title");
+
+    const category =
+      data.get("category");
+
+    const description =
+      data.get("description");
+
+    const file =
+      data.get("image");
+
+    let updateData = {
       title,
       category,
       description,
-    } = body;
+    };
+
+    if (file) {
+
+      const bytes =
+        await file.arrayBuffer();
+
+      const buffer =
+        Buffer.from(bytes);
+
+      const uploadedImage =
+        await imagekit.upload({
+          file: buffer,
+          fileName: file.name,
+        });
+
+      updateData.image =
+        uploadedImage.url;
+    }
 
     const updatedBlog =
       await Blog.findByIdAndUpdate(
-        id,
-        {
-          title,
-          category,
-          description,
-        },
+        params.id,
+        updateData,
         {
           new: true,
         }
@@ -29,8 +64,6 @@ export async function PUT(req, context) {
 
     return NextResponse.json({
       success: true,
-      message:
-        "Blog updated successfully",
       data: updatedBlog,
     });
 
@@ -48,16 +81,18 @@ export async function PUT(req, context) {
   }
 }
 
-
 export async function DELETE(
   req,
-  context
+  { params }
 ) {
   try {
+
     await connectDB();
-    const { id } =
-      await context.params;
-    await Blog.findByIdAndDelete(id);
+
+    await Blog.findByIdAndDelete(
+      params.id
+    );
+
     return NextResponse.json({
       success: true,
       message:

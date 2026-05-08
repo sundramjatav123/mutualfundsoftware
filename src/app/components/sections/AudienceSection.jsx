@@ -6,15 +6,15 @@ import { FiUser, FiBriefcase, FiTrendingUp } from "react-icons/fi";
 
 const audience = [
     {
-        icon: <FiUser />,
+        icon: '/images/mfds.webp',
         title: "Mutual Fund Distributors (MFDs)",
     },
     {
-        icon: <FiBriefcase />,
+        icon: '/images/fa.webp',
         title: "Independent Financial Advisors (IFAs)",
     },
     {
-        icon: <FiTrendingUp />,
+        icon: '/images/wm.png',
         title: "Wealth Managers",
     },
 ];
@@ -42,8 +42,8 @@ export function AudienceSection() {
                             transition={{ delay: i * 0.1 }}
                             className="p-6 rounded-xl border border-[var(--rv-border)] bg-[var(--rv-card)]  flex flex-col items-center text-center gap-4   hover:-translate-y-2 transition relative"
                         >
-                            <div className="w-14 h-14 flex items-center justify-center rounded-xl  bg-gradient-to-r from-[var(--rv-primary)] to-[var(--rv-secondary)]  text-[var(--rv-white)] text-xl">
-                                {item.icon}
+                            <div className="w-64 h-64 flex items-center justify-center rounded-xl p-2 bg-gradient-to-r from-[var(--rv-primary)] to-[var(--rv-secondary)]  text-[var(--rv-white)] text-xl">
+                                <img src={item.icon} alt="" />
                             </div>
 
                             <h5 className="font-semibold">

@@ -1,4 +1,3 @@
-// data/servicesData.js
 
 export const services = [
     {

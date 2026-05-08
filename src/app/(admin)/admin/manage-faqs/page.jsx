@@ -212,8 +212,8 @@ export default function Page() {
       </div>
 
       <div className="overflow-hidden rounded-xl border border-[var(--rv-border)] bg-[var(--rv-card)]">
-        <div className="overflow-x-auto">
-          <table className="w-full min-w-[700px]">
+        <div className="overflow-x-auto whitespace-nowrap">
+          <table className="w-full">
             <thead className="border-b border-[var(--rv-border)] bg-[var(--rv-primary-light)]">
               <tr>
                 <th className="text-left p-4 font-medium">
@@ -234,10 +234,13 @@ export default function Page() {
                     key={i}
                     className="border-t border-[var(--rv-border)]">
                     <td className="p-5 font-medium max-w-sm">
-                      {faq.question}
+                      <div className="w-60">
+                        {faq.question}
+                      </div>
                     </td>
                     <td className="p-5 opacity-70">
                       <div
+                      className="max-w-3xl break-words"
                         dangerouslySetInnerHTML={{
                           __html: faq.answer,
                         }}
@@ -296,9 +299,7 @@ export default function Page() {
             </tbody>
 
           </table>
-
         </div>
-
       </div>
 
       {openModal && (

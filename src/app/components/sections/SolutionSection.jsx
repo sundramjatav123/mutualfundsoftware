@@ -24,7 +24,6 @@ export default function SolutionSection() {
   return (
     <section className="w-full bg-[var(--rv-bg)] px-4 text-[var(--rv-text)] overflow-hidden">
       <div className="max-w-7xl mx-auto main-section grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-
         <motion.div
           initial={{ opacity: 0, x: -60 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -82,7 +81,7 @@ export default function SolutionSection() {
           className="relative"
         >
 
-          <div className="bg-[var(--rv-card)] border border-[var(--rv-border)] rounded-xl p-6 md:p-10 flex flex-col gap-6">
+          <div className="bg-[var(--rv-card)] border border-[var(--rv-border)] rounded-xl p-6 pb-12 md:p-10 flex flex-col gap-6">
             <h4 className="font-semibold">
               Built for Efficiency & Scale
             </h4>
@@ -127,7 +126,7 @@ export default function SolutionSection() {
             </div>
           </div>
 
-          <div className="absolute -bottom-12 right-2 bg-[var(--rv-card)] border border-[var(--rv-border)] rounded-xl px-4 py-3">
+          <div className="absolute -bottom-8 md:-bottom-10 right-2 bg-[var(--rv-card)] border border-[var(--rv-border)] rounded-xl px-4 py-2">
             <p className="opacity-60">Clients Managed</p>
             <p className="font-semibold">+1,200</p>
           </div>

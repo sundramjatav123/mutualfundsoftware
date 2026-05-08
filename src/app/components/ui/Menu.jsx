@@ -97,7 +97,7 @@ const Menu = () => {
                 <Link
                   key={item.link}
                   href={item.link}
-                  className="flex flex-col items-center gap-1 relative group min-w-[52px]"
+                  className="flex flex-col items-center gap-1 relative group md:min-w-[52px] min-w-[40px]"
                 >
 
                   <div
@@ -165,7 +165,7 @@ const Menu = () => {
                 <Link
                   key={item.link}
                   href={item.link}
-                  className="flex flex-col items-center gap-1 relative group min-w-[52px]"
+                  className="flex flex-col items-center gap-1 relative group md:min-w-[52px] min-w-[40px]"
                 >
 
                   <div

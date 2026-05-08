@@ -12,6 +12,7 @@ import {
 } from "react-icons/fi";
 import TextEditor from "@/app/components/ui/TextEditor";
 import { showAlert } from "@/utils/swalConfig";
+import FileUpload from "@/app/components/ui/FileUpload";
 
 
 const blogFields = [
@@ -29,6 +30,13 @@ const blogFields = [
     type: "input",
     inputType: "text",
     placeholder: "Enter category",
+  },
+  {
+    label: "Upload Image",
+    name: "image",
+    type: "file",
+    inputType: "file",
+    placeholder: "upload image",
   },
 
   {
@@ -60,6 +68,7 @@ export default function Page() {
       title: "",
       category: "",
       description: "",
+      image: null,
     });
 
 
@@ -99,6 +108,7 @@ export default function Page() {
       title: "",
       category: "",
       description: "",
+      image: null,
     });
 
     setOpenModal(true);
@@ -117,37 +127,62 @@ export default function Page() {
         ? "PUT"
         : "POST";
 
-      const response = await fetch(
-        url,
-        {
-          method,
+      const blogData =
+        new FormData();
 
-          headers: {
-            "Content-Type":
-              "application/json",
-          },
-
-          body: JSON.stringify(
-            formData
-          ),
-        }
+      blogData.append(
+        "title",
+        formData.title
       );
+
+      blogData.append(
+        "category",
+        formData.category
+      );
+
+      blogData.append(
+        "description",
+        formData.description
+      );
+
+      if (formData.image) {
+
+        blogData.append(
+          "image",
+          formData.image
+        );
+
+      }
+
+      const response =
+        await fetch(url, {
+          method,
+          body: blogData,
+        });
+
       const data =
         await response.json();
+
       if (!response.ok) {
+
         alert(data.message);
         return;
+
       }
 
       await fetchBlogs();
+
       setFormData({
         title: "",
         category: "",
         description: "",
+        image: null,
       });
 
       setEditId(null);
+
       setOpenModal(false);
+
       showAlert({
         icon: "success",
         title: "Success",
@@ -157,7 +192,9 @@ export default function Page() {
       });
 
     } catch (error) {
+
       console.log(error);
+
     }
   };
 
@@ -170,6 +207,7 @@ export default function Page() {
       category: blog.category,
       description:
         blog.description,
+      image: null
     });
 
     setOpenModal(true);
@@ -235,6 +273,9 @@ export default function Page() {
             <thead className="border-b border-[var(--rv-border)] bg-[var(--rv-primary-light)]">
               <tr>
                 <th className="text-left p-5 font-medium">
+                  Image
+                </th>
+                <th className="text-left p-5 font-medium">
                   Title
                 </th>
                 <th className="text-left p-5 font-medium">
@@ -256,8 +297,19 @@ export default function Page() {
                     key={i}
                     className="border-t border-[var(--rv-border)]"
                   >
+                    <td className="p-5">
+                      <div className="w-40 h-20">
+                        <img
+                          src={blog.image}
+                          alt={blog.title}
+                          className="w-full h-full rounded-lg object-cover"
+                        />
+                      </div>
+                    </td>
                     <td className="p-5 font-medium">
+                      <div className="w-52">
                       {blog.title}
+                      </div>
                     </td>
                     <td className="p-5">
                       <span className="px-3 py-1 rounded-full bg-[var(--rv-primary-light)] text-[var(--rv-primary)] text-sm">
@@ -266,6 +318,7 @@ export default function Page() {
                     </td>
                     <td className="p-5 opacity-70">
                       <div
+                      className="w-96 line-clamp-1"
                         dangerouslySetInnerHTML={{
                           __html: blog.description,
                         }}
@@ -395,10 +448,31 @@ export default function Page() {
                     );
 
                   }
+
+                  if (
+                    field.type === "file"
+                  ) {
+                    return (
+                      <FileUpload
+                        key={i}
+                        label={field.label}
+                        name={field.name}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            image:
+                              e.target.files[0],
+                          })
+                        }
+                      />
+                    );
+                  }
                   return null;
                 }
               )}
             </div>
+
+
 
             <div className="flex items-center justify-end gap-3">
               <Button

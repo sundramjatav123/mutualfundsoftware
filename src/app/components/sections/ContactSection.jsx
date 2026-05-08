@@ -55,16 +55,7 @@ export default function ContactSection({ siteData }) {
 
   return (
     <section className="w-full bg-[var(--rv-primary-light)] text-[var(--rv-text)] px-4 relative overflow-hidden">
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 0.1 }}
-        transition={{ duration: 1 }}
-        className="absolute top-10 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-[var(--rv-primary)] blur-[120px] -z-10"
-      ></motion.div>
-
       <div className="max-w-7xl mx-auto main-section grid grid-cols-1 md:grid-cols-2 gap-10">
-
         <motion.div
           initial={{ opacity: 0, x: -60 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -126,8 +117,13 @@ export default function ContactSection({ siteData }) {
             ))}
           </div>
         </motion.div>
-
-        <ContactForm title={'Book Free Consultation'} />
+        <motion.div
+          initial={{ opacity: 0, x: 60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <ContactForm title={'Book Free Consultation'} />
+        </motion.div>
       </div>
     </section>
   );

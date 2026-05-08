@@ -1,20 +1,24 @@
 import { NextResponse } from "next/server";
 import connectDB from "@/lib/mongodb";
 import Blog from "@/models/Blog";
-
-
+import imagekit from "@/lib/imagekit";
 
 export async function GET() {
   try {
     await connectDB();
-    const blogs = await Blog.find().sort({
-      createdAt: -1,
-    });
+
+    const blogs =
+      await Blog.find().sort({
+        createdAt: -1,
+      });
+
     return NextResponse.json({
       success: true,
       data: blogs,
     });
+
   } catch (error) {
+
     return NextResponse.json(
       {
         success: false,
@@ -27,32 +31,45 @@ export async function GET() {
   }
 }
 
-
-
 export async function POST(req) {
+
   try {
+
     await connectDB();
-    const body = await req.json();
-    const {
-      title,
-      category,
-      description,
-    } = body;
-    if (
-      !title ||
-      !category ||
-      !description
-    ) {
-      return NextResponse.json(
-        {
-          success: false,
-          message:
-            "All fields are required",
-        },
-        {
-          status: 400,
-        }
-      );
+
+    const data =
+      await req.formData();
+
+    const title =
+      data.get("title");
+
+    const category =
+      data.get("category");
+
+    const description =
+      data.get("description");
+
+    const file =
+      data.get("image");
+
+    let imageUrl = "";
+
+    if (file) {
+
+      const bytes =
+        await file.arrayBuffer();
+
+      const buffer =
+        Buffer.from(bytes);
+
+      const uploadedImage =
+        await imagekit.upload({
+          file: buffer,
+          fileName: file.name,
+        });
+
+      imageUrl =
+        uploadedImage.url;
     }
 
     const blog =
@@ -60,16 +77,16 @@ export async function POST(req) {
         title,
         category,
         description,
+        image: imageUrl,
       });
 
     return NextResponse.json({
       success: true,
-      message:
-        "Blog added successfully",
       data: blog,
     });
 
   } catch (error) {
+
     return NextResponse.json(
       {
         success: false,

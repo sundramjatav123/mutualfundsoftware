@@ -8,6 +8,7 @@ import TextareaField from "@/app/components/ui/TextareaField";
 import Button from "@/app/components/ui/Button";
 import { validateForm } from "@/utils/validateForm";
 import Heading from "@/app/components/ui/Heading";
+import ContactForm from "@/app/components/sections/ContactForm";
 
 const Contact = ({ siteData }) => {
   const [form, setForm] = useState({
@@ -32,6 +33,7 @@ const Contact = ({ siteData }) => {
   return (
     <section className="bg-[var(--rv-bg)] text-[var(--rv-text)] overflow-hidden px-4">
       <div className="max-w-7xl mx-auto main-section flex flex-col gap-5 md:gap-8">
+
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
@@ -40,56 +42,23 @@ const Contact = ({ siteData }) => {
         >
           <Heading heading1={'Let’s Build Your'} heading2={'Financial Future'} highlight="Financial Future" description={'Get expert advice tailored to your goals. Start your journey today.'} />
         </motion.div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 md:gap-8">
 
-        <motion.div
-          initial={{ opacity: 0, y: 80 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className=""
-        >
-          <form
-            onSubmit={handleSubmit}
-            className="p-4 md:p-8 rounded-xl bg-[var(--rv-card)] border border-[var(--rv-border)] flex flex-col gap-5 backdrop-blur-xl"
-          >
-
-            <div className="grid md:grid-cols-2 gap-4">
-              <InputField
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                error={errors.name}
-                placeholder="Full Name"
-              />
-              <InputField
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                error={errors.email}
-                placeholder="Email Address"
-              />
-            </div>
-
-            <InputField
-              name="mobile"
-              value={form.mobile}
-              onChange={handleChange}
-              error={errors.mobile}
-              placeholder="Mobile Number"
+          <div className="order-2 lg:order-1">
+            <ContactForm
+              title={'Book Free Consultation'}
             />
+          </div>
 
-            <TextareaField
-              name="message"
-              value={form.message}
-              onChange={handleChange}
-              error={errors.message}
-              placeholder="Tell us about your goals..."
+          <div className="rounded-xl border border-[var(--rv-border)] w-full h-full order-1 lg:order-2">
+            <img
+              src="/images/contact-us.svg"
+              alt=""
+              className="w-full h-full object-cover"
             />
+          </div>
 
-            <div>
-              <Button text="Send Message" type="submit" />
-            </div>
-          </form>
-        </motion.div>
+        </div>
 
         <div className="grid md:grid-cols-3 gap-6">
 

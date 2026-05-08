@@ -11,22 +11,22 @@ import {
 
 const problems = [
   {
-    icon: <FiUsers />,
+    img:"/images/challenges/1.webp",
     title: "Managing Multiple Clients",
     desc: "Handling hundreds of clients manually becomes chaotic and difficult to scale efficiently.",
   },
   {
-    icon: <FiFileText />,
+    img:"/images/challenges/2.webp",
     title: "Manual Reporting",
     desc: "Creating reports manually consumes valuable time and increases operational workload.",
   },
   {
-    icon: <FiTrendingDown />,
+    img:"/images/challenges/3.webp",
     title: "Low Client Engagement",
     desc: "Delayed updates and lack of communication reduce trust and client retention over time.",
   },
   {
-    icon: <FiBarChart2 />,
+    img:"/images/challenges/4.webp",
     title: "Difficulty Tracking AUM",
     desc: "Without centralized insights, monitoring portfolios and business growth becomes complicated.",
   },
@@ -73,15 +73,15 @@ export default function ProblemsSection() {
 
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 bg-gradient-to-br from-red-500/5 to-transparent"></div>
 
-              <div className="relative z-10 w-14 h-14 rounded-xl flex items-center justify-center bg-red-500/10 text-red-400 text-2xl">
-                {item.icon}
+              <div className="relative z-10 w-20 h-20 rounded-xl flex items-center justify-center bg-red-500/10 text-red-400 text-2xl">
+               <img src={item.img} alt="" />
               </div>
 
               <div className="relative z-10 flex flex-col gap-2">
 
-                <h6 className="font-semibold">
+                <h5 className="font-semibold">
                   {item.title}
-                </h6>
+                </h5>
 
                 <p className="opacity-75 leading-6">
                   {item.desc}

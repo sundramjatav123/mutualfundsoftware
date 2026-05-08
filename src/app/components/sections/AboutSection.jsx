@@ -7,7 +7,7 @@ import Heading from "../ui/Heading";
 import { motion } from "framer-motion";
 import Tilt from "react-parallax-tilt";
 
-const AboutSection = () => {
+const AboutSection = () => {  
   return (
     <section className="w-full bg-[var(--rv-bg)] px-4 text-[var(--rv-text)] relative overflow-hidden">
       <div className="absolute top-0 left-0 w-[300px] h-[300px] bg-[var(--rv-primary)] opacity-10 blur-[120px]"></div>

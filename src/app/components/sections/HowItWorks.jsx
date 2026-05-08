@@ -6,16 +6,19 @@ import Heading from "../ui/Heading";
 const steps = [
   {
     step: "01",
+    img:"/images/works/1.png",
     title: "Book a Free Demo",
     desc: "Schedule a quick walkthrough to see how the platform helps you manage clients, automate reporting, and grow your AUM.",
   },
   {
     step: "02",
+    img:"/images/works/2.png",
     title: "We Understand Your Workflow",
     desc: "Our team analyzes your current process and tailors the platform to match your advisory style and business needs.",
   },
   {
     step: "03",
+    img:"/images/works/3.webp",
     title: "Get Instant Access & Start Scaling",
     desc: "Onboard seamlessly, migrate your data, and start managing portfolios, clients, and reports from one powerful dashboard.",
   },
@@ -60,33 +63,22 @@ export default function HowItWorks() {
               transition={{ delay: i * 0.15 }}
               className="relative p-6 rounded-xl bg-[var(--rv-card)] border border-[var(--rv-border)] backdrop-blur-sm flex flex-col gap-4"
             >
-
-              <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-gradient-to-r from-[var(--rv-primary)] to-[var(--rv-secondary)] text-[var(--rv-white)] font-bold">
-
-                {item.step}
-
+              <div className="w-24 h-24">
+                <img src={item.img} className="w-full h-full object-cover" alt="" />
               </div>
-
               <h5 className="font-semibold">
                 {item.title}
               </h5>
-
               <p className="opacity-80 leading-relaxed">
                 {item.desc}
               </p>
-
               {i !== steps.length - 1 && (
                 <span className="hidden md:block absolute top-1/2 right-0 w-10 h-[2px] bg-[var(--rv-border)] translate-x-full"></span>
               )}
-
             </motion.div>
-
           ))}
-
         </div>
-
       </div>
-
     </section>
   );
 }

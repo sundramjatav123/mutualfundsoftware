@@ -29,7 +29,7 @@ export default function Topbar() {
 
   return (
     <header
-      className="sticky top-0 z-40
+      className="sticky top-0 z-10
       border-b border-[var(--rv-border)]
       bg-[var(--rv-card)]/80
       backdrop-blur-xl

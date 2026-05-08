@@ -62,3 +62,20 @@ export async function getBlogsData() {
     return [];
   }
 }
+export async function getBlogsSlugData(slug) {
+  try {
+    await connectDB();
+    const data =
+      await Blog.findOne({
+        title: decodeURIComponent(slug),
+      }).lean();
+    return JSON.parse(
+      JSON.stringify(data)
+    );
+  } catch (error) {
+
+    console.log(error);
+
+    return null;
+  }
+}
