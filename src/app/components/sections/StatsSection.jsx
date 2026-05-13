@@ -72,7 +72,7 @@ export default function StatsSection() {
                   <span className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-full bg-[var(--rv-border)]"></span>
                 )}
 
-                <div className="w-24 h-24 bg-[var(--rv-white)] p-2 rounded-xl">
+                <div className="w-24 h-24">
                   <img src={s?.img} className="w-full h-full object-cover" alt="" />
                 </div>
 
