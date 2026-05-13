@@ -42,8 +42,8 @@ export function AudienceSection() {
                             transition={{ delay: i * 0.1 }}
                             className="p-6 rounded-xl border border-[var(--rv-border)] bg-[var(--rv-card)]  flex flex-col items-center text-center gap-4   hover:-translate-y-2 transition relative"
                         >
-                            <div className="w-64 h-64 flex items-center justify-center rounded-xl p-2 bg-gradient-to-r from-[var(--rv-primary)] to-[var(--rv-secondary)]  text-[var(--rv-white)] text-xl">
-                                <img src={item.icon} alt="" />
+                            <div className="w-full h-72 flex items-center justify-center rounded-xl p-2 bg-gradient-to-r from-[var(--rv-primary)] to-[var(--rv-secondary)]  text-[var(--rv-white)] text-xl">
+                                <img src={item.icon} className="w-full h-full object-contain" alt="" />
                             </div>
 
                             <h5 className="font-semibold">

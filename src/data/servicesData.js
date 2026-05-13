@@ -2,7 +2,7 @@
 export const services = [
     {
         slug: "wealth-elite",
-        title: "Wealth Elite Platform",
+        title: "Wealth Elite",
         subtitle: "Built for Serious MFD Growth",
         icon: "trending",
 

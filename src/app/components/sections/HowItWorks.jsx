@@ -63,7 +63,7 @@ export default function HowItWorks() {
               transition={{ delay: i * 0.15 }}
               className="relative p-6 rounded-xl bg-[var(--rv-card)] border border-[var(--rv-border)] backdrop-blur-sm flex flex-col gap-4"
             >
-              <div className="w-24 h-24">
+              <div className="w-32 h-32">
                 <img src={item.img} className="w-full h-full object-cover" alt="" />
               </div>
               <h5 className="font-semibold">

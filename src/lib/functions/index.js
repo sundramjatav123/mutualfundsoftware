@@ -2,6 +2,7 @@ import connectDB from "@/lib/mongodb";
 import Blog from "@/models/Blog";
 import Faq from "@/models/Faq";
 import SiteSetting from "@/models/SiteSetting";
+import Testimonial from "@/models/Testimonial";
 
 
 const toPlain = (data) => {
@@ -62,6 +63,7 @@ export async function getBlogsData() {
     return [];
   }
 }
+
 export async function getBlogsSlugData(slug) {
   try {
     await connectDB();
@@ -77,5 +79,23 @@ export async function getBlogsSlugData(slug) {
     console.log(error);
 
     return null;
+  }
+}
+
+export async function getTestimonialsData() {
+  try {
+    await connectDB();
+    const data =
+      await Testimonial.find()
+        .sort({
+          createdAt: -1,
+        })
+        .lean();
+    return Array.isArray(data)
+      ? toPlain(data)
+      : [];
+  } catch (error) {
+    console.log(error);
+    return [];
   }
 }

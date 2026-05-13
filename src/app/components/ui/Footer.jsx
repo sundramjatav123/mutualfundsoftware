@@ -1,10 +1,10 @@
 "use client";
 
+import { services } from "@/data/servicesData";
 import Link from "next/link";
 
-export default function Footer({
-  siteData,
-}) {
+export default function Footer({ siteData }) {
+
   const footerLinks = {
     Company: [
 
@@ -30,34 +30,11 @@ export default function Footer({
 
     ],
 
-    Services: [
-
-      {
-        name: "Wealth Elite",
-      },
-
-      {
-        name: "Robo App",
-      },
-
-      {
-        name: "Financial Website",
-      },
-
-      {
-        name: "Business Booster",
-      },
-
-      {
-        name: "Advisory X App",
-      },
-
-      {
-        name:
-          "Digital Marketing Services",
-      },
-
-    ],
+    Services:
+      services?.map((service) => ({
+        name: service?.title,
+        href: `/services/${service?.slug}`,
+      })) || [],
 
     ContactUs: [
       {
@@ -67,7 +44,7 @@ export default function Footer({
               Mobile :-
             </span>
             <span className="opacity-80 break-words">
-            {siteData?.phone || ""}
+              {siteData?.phone || ""}
             </span>
           </div>
         ),

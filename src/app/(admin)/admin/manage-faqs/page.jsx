@@ -212,7 +212,7 @@ export default function Page() {
       </div>
 
       <div className="overflow-hidden rounded-xl border border-[var(--rv-border)] bg-[var(--rv-card)]">
-        <div className="overflow-x-auto whitespace-nowrap">
+        <div className="overflow-x-auto">
           <table className="w-full">
             <thead className="border-b border-[var(--rv-border)] bg-[var(--rv-primary-light)]">
               <tr>
@@ -240,12 +240,13 @@ export default function Page() {
                     </td>
                     <td className="p-5 opacity-70">
                       <div
-                      className="max-w-3xl break-words"
+                        className="w-96 [&_*]:m-0"
                         dangerouslySetInnerHTML={{
-                          __html: faq.answer,
+                          __html: faq.answer
+                            ?.replace(/&nbsp;/g, " ")
+                            ?.replace(/\s+/g, " "),
                         }}
                       />
-
                     </td>
                     <td className="p-5">
                       <div className="flex items-center justify-end gap-3">

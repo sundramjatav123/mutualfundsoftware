@@ -52,6 +52,11 @@ const sidebarLinks = [
         link: "/admin/manage-faqs",
     },
     {
+        title: "Manage Testimonials",
+        icon: FiFileText,
+        link: "/admin/manage-testimonials",
+    },
+    {
         title: "Manage Lead",
         icon: FiBriefcase,
         link: "/admin/manage-lead",

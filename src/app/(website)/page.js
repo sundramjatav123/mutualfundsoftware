@@ -12,12 +12,13 @@ import ComparisonSection from "../components/sections/ComparisonSection";
 import { AudienceSection } from "../components/sections/AudienceSection";
 import { BenefitsSection } from "../components/sections/BenefitsSection";
 import ProblemsSection from "../components/sections/ProblemsSection";
-import { getBlogsData, getFQAsData, getSiteData } from "@/lib/functions";
+import { getBlogsData, getFQAsData, getSiteData, getTestimonialsData } from "@/lib/functions";
 
 export default async function HomePage() {
   const siteData = await getSiteData();
   const faqs = await getFQAsData();
   const blogs = await getBlogsData();
+  const testimonials = await getTestimonialsData();
 
   return (
     <div className="bg-[var(--rv-bg)] text-[var(--rv-text)]">
@@ -30,7 +31,7 @@ export default async function HomePage() {
       <BenefitsSection />
       <AudienceSection />
       <HowItWorks />
-      <TestimonialsSection />
+      <TestimonialsSection testimonials={testimonials} />
       <BlogSection blogs={blogs} />
       <ComparisonSection />
       <FAQSection faqs={faqs} />
